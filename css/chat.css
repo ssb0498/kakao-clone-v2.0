@@ -65,23 +65,28 @@
 }
 .message {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 50%;
-  background-color: tomato;
+  margin-bottom: 20px;
 }
 .message .message__content {
   width: 80%;
-  background-color: blue;
+}
+.sent-message .message__content,
+.sent-message .message__timestamp {
+  display: flex;
+  justify-content: flex-end;
 }
 .incoming-message {
   align-self: flex-start;
 }
 .sent-message {
   align-self: flex-end;
+  justify-content: flex-end;
 }
 .incoming-message img {
   border-radius: 15px;
-  margin-right: 20px;
+  margin-right: 25px;
 }
 .message .message__bubble {
   background-color: white;
@@ -90,4 +95,19 @@
     inset 0 -2px 6px 0 rgba(10, 37, 64, 0.35);
   padding: 10px 20px;
   border-radius: 30px;
+  color: whitesmoke;
+}
+.incoming-message .message__author {
+  margin-bottom: 5px;
+  display: block;
+  font-weight: 600;
+  font-size: 12px;
+}
+.incoming-message .message__bubble {
+  border-bottom-left-radius: 0px;
+  background-image: linear-gradient(to right, #076585, #fff);
+}
+.sent-message .message__bubble {
+  border-bottom-right-radius: 0px;
+  background-image: linear-gradient(to left, #076585, #fff);
 }
