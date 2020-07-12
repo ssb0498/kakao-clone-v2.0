@@ -1,9 +1,19 @@
-.chat-screen {
+.header-wrapper {
+  background-color: white;
+
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.25),
+    0 30px 20px -30px rgba(0, 0, 0, 0.3);
+}
+.chats-body {
   background-image: url("../images/chatBg.png");
-  min-height: 100vh;
 }
 .chats-body {
   padding: 0;
+  padding-top: 100px;
+  min-height: 200vh;
 }
 .chats-body .status-bar {
   padding: 10px 20px;
@@ -12,22 +22,76 @@
 .chats-body .header {
   padding: 0px 20px;
 }
-.chat__write {
-  background-color: #fcfcfc;
+.chat__write--container {
   position: fixed;
-  width: 80%;
-  bottom: 50px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
-  border-radius: 40px;
+
+  bottom: 0px;
   align-items: center;
   margin: 0 auto;
   left: 0;
   right: 0;
-  box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.25),
-    0 30px 60px -30px rgba(0, 0, 0, 0.3),
+}
+
+.chat__icon-left {
+  position: absolute;
+  left: 10px;
+}
+.chat__icon-right {
+  position: absolute;
+  right: 10px;
+}
+@keyframes float {
+  0% {
+    transform: translateY(-100px);
+    box-shadow: 0 14px 18px -1px rgba(50, 50, 93, 0.25),
+      0 30px 60px -13px rgba(0, 0, 0, 0.3),
+      inset 0 -2px 6px 0 rgba(10, 37, 64, 0.35);
+  }
+  50% {
+    transform: scale(1.01) translateY(-100px);
+    box-shadow: 0 14px 18px 10px rgba(50, 50, 93, 0.25),
+      0 30px 60px -13px rgba(0, 0, 0, 0.3),
+      inset 0 -2px 6px 0 rgba(10, 37, 64, 0.35);
+  }
+  100% {
+    transform: translateY(-100px);
+    box-shadow: 0 14px 18px -1px rgba(50, 50, 93, 0.25),
+      0 30px 60px -13px rgba(0, 0, 0, 0.3),
+      inset 0 -2px 6px 0 rgba(10, 37, 64, 0.35);
+  }
+}
+.chat__write {
+  margin: 0 auto;
+  bottom: 0px;
+  width: 100%;
+  border-radius: 0;
+  padding: 15px 60px;
+  width: 100%;
+  border: none;
+  font-size: 14px;
+  transition: width 0.5s ease-in-out, border-radius 0.5s ease-in-out,
+    transform 0.5s ease-in-out;
+}
+.chat__write:focus {
+  outline: none;
+  width: 80%;
+
+  transform: translateY(-100px);
+  border-radius: 40px;
+  box-shadow: 0 14px 18px -1px rgba(50, 50, 93, 0.25),
+    0 30px 60px -13px rgba(0, 0, 0, 0.3),
     inset 0 -2px 6px 0 rgba(10, 37, 64, 0.35);
+  animation: float 1.5s ease-in-out infinite forwards;
+}
+.chat__icon {
+  font-size: 20px;
+  transition: opacity 0.1s ease-in-out;
+}
+.chat__write:focus ~ .chat__icon {
+  opacity: 0;
 }
 .chat__write i {
   font-size: 22px;
@@ -35,20 +99,12 @@
 .chat__write-column:nth-child(2) {
   width: 80%;
 }
-.chat__write-column input {
-  padding: 15px 10px;
-  width: 100%;
-  border: none;
-  font-size: 14px;
-}
-.chat__write-column input:focus {
-  outline: none;
-}
+
 .chat-screen .chat__messages {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center;
   border-top: 1px solid #f7f7f7;
   padding: 0px 20px;
   padding-top: 30px;
@@ -66,23 +122,15 @@
 .message {
   display: flex;
   align-items: flex-start;
-  width: 50%;
+
   margin-bottom: 20px;
 }
-.message .message__content {
-  width: 80%;
-}
-.sent-message .message__content,
-.sent-message .message__timestamp {
-  display: flex;
-  justify-content: flex-end;
-}
+
 .incoming-message {
   align-self: flex-start;
 }
 .sent-message {
   align-self: flex-end;
-  justify-content: flex-end;
 }
 .incoming-message img {
   border-radius: 15px;
@@ -96,9 +144,10 @@
   padding: 10px 20px;
   border-radius: 30px;
   color: whitesmoke;
+  display: block;
 }
 .incoming-message .message__author {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: block;
   font-weight: 600;
   font-size: 12px;
@@ -110,4 +159,31 @@
 .sent-message .message__bubble {
   border-bottom-right-radius: 0px;
   background-image: linear-gradient(to left, #076585, #fff);
+}
+
+@keyframes incomingAnim {
+  from {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.incoming-message {
+  animation: incomingAnim 0.5s ease-in-out forwards;
+}
+@keyframes sentAnim {
+  from {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.sent-message {
+  animation: sentAnim 0.5s ease-in-out forwards;
 }
