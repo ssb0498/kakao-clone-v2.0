@@ -11,7 +11,8 @@
   opacity: 0.6;
   margin-bottom: 10px;
 }
-.friendsbody .header .header__title {
+.friendsbody .header .header__title,
+.findbody .header .header__title {
   text-shadow: 2px 5px 5px white;
   animation: flow 1s ease-in-out infinite;
 }

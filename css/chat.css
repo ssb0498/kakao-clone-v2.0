@@ -147,7 +147,7 @@
     inset 0 -2px 6px 0 rgba(10, 37, 64, 0.35);
   padding: 10px 20px;
   border-radius: 30px;
-  color: whitesmoke;
+  color: black;
   display: block;
 }
 .incoming-message .message__author {
@@ -158,11 +158,11 @@
 }
 .incoming-message .message__bubble {
   border-bottom-left-radius: 0px;
-  background-image: linear-gradient(to right, #076585, #fff);
+  background-image: linear-gradient(to left, #d6d59c, #fff);
 }
 .sent-message .message__bubble {
   border-bottom-right-radius: 0px;
-  background-image: linear-gradient(to left, #076585, #fff);
+  background-image: linear-gradient(to right, #d6d59c, #fff);
 }
 
 @keyframes incomingAnim {

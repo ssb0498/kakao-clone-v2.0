@@ -30,3 +30,11 @@
   opacity: 0.7;
   margin-bottom: 20px;
 }
+.findbody {
+  background-image: url("../images/original.gif");
+  background-size: 100% 200%;
+  color: white;
+}
+.findbody .fa-user-plus {
+  color: black;
+}
